@@ -1,0 +1,10 @@
+# virtualenv
+.Python
+bin
+include
+lib
+pip-selfcheck.json
+
+# Creds file
+.rabbit
+
