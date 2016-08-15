@@ -19,8 +19,8 @@ BROKER_HOST = os.environ.get("RABBIT_HOST", "localhost")
 BROKER_PORT = os.environ.get("RABBIT_PORT", "5672")
 BROKER_VHOST = os.environ.get("RABBIT_VHOST", "/")
 BROKER_URI = "amqp://{0}:{1}@{2}:{3}/{4}".format(
-    BROKER_USER, BROKER_PASSWORD, BROKER_HOST, BROKER_PASSWORD,
-    BROKER_PORT, BROKER_VHOST)
+    BROKER_USER, BROKER_PASSWORD, BROKER_HOST, BROKER_PORT, BROKER_VHOST)
+BROKER_SSL = os.environ.get("RABBIT_SSL", False)
 
 log.basicConfig(stream=sys.stdout, level=log.DEBUG)
 
@@ -43,5 +43,6 @@ class NotificationsDump(ConsumerMixin):
 
 if __name__ == "__main__":
     log.info("Connecting to broker {}".format(BROKER_URI))
-    with BrokerConnection(BROKER_URI) as connection:
+    with BrokerConnection(BROKER_URI, ssl=BROKER_SSL) as connection:
         NotificationsDump(connection).run()
+
