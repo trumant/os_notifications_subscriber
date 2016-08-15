@@ -19,8 +19,7 @@ BROKER_HOST = os.environ.get("RABBIT_HOST", "localhost")
 BROKER_PORT = os.environ.get("RABBIT_PORT", "5672")
 BROKER_VHOST = os.environ.get("RABBIT_VHOST", "/")
 BROKER_URI = "amqp://{0}:{1}@{2}:{3}/{4}".format(
-    BROKER_USER, BROKER_PASSWORD, BROKER_HOST, BROKER_PASSWORD,
-    BROKER_PORT, BROKER_VHOST)
+    BROKER_USER, BROKER_PASSWORD, BROKER_HOST, BROKER_PORT, BROKER_VHOST)
 
 log.basicConfig(stream=sys.stdout, level=log.DEBUG)
 
